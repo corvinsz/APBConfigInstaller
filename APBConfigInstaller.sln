@@ -1,0 +1,56 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33103.201
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APBConfigInstaller", "APBConfigInstaller\APBConfigInstaller\APBConfigInstaller.csproj", "{5DE76ED2-C96F-4D5B-85FF-5BC9850C11AF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APBConfigInstaller.Tests", "APBConfigInstaller\APBConfigInstaller.Tests\APBConfigInstaller.Tests.csproj", "{75C75A76-E608-41BB-AEC2-80A1C95B7B62}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{50AAD861-2EF1-4EAB-80EB-20FECB15232C}"
+	ProjectSection(SolutionItems) = preProject
+		APBConfigInstaller\.editorconfig = APBConfigInstaller\.editorconfig
+		APBConfigInstaller\Directory.Build.props = APBConfigInstaller\Directory.Build.props
+		APBConfigInstaller\Directory.Build.targets = APBConfigInstaller\Directory.Build.targets
+		APBConfigInstaller\Directory.Packages.props = APBConfigInstaller\Directory.Packages.props
+		APBConfigInstaller\exclusions.dic = APBConfigInstaller\exclusions.dic
+		APBConfigInstaller\NuGet.config = APBConfigInstaller\NuGet.config
+		APBConfigInstaller\Settings.XamlStyler = APBConfigInstaller\Settings.XamlStyler
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{EF62C430-6899-4C85-BFFC-D71632937A3B}"
+	ProjectSection(SolutionItems) = preProject
+		APBConfigInstaller\.github\dependabot.yml = APBConfigInstaller\.github\dependabot.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{AC2A502B-963E-4FD6-ACCA-8F96EDD4190F}"
+	ProjectSection(SolutionItems) = preProject
+		APBConfigInstaller\.github\workflows\build_app.yml = APBConfigInstaller\.github\workflows\build_app.yml
+		APBConfigInstaller\.github\workflows\code_coverage_comment.yml = APBConfigInstaller\.github\workflows\code_coverage_comment.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5DE76ED2-C96F-4D5B-85FF-5BC9850C11AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DE76ED2-C96F-4D5B-85FF-5BC9850C11AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DE76ED2-C96F-4D5B-85FF-5BC9850C11AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DE76ED2-C96F-4D5B-85FF-5BC9850C11AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75C75A76-E608-41BB-AEC2-80A1C95B7B62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75C75A76-E608-41BB-AEC2-80A1C95B7B62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75C75A76-E608-41BB-AEC2-80A1C95B7B62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75C75A76-E608-41BB-AEC2-80A1C95B7B62}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EF62C430-6899-4C85-BFFC-D71632937A3B} = {50AAD861-2EF1-4EAB-80EB-20FECB15232C}
+		{AC2A502B-963E-4FD6-ACCA-8F96EDD4190F} = {EF62C430-6899-4C85-BFFC-D71632937A3B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {490F259C-CD1B-446C-A893-CD94D4954AE9}
+	EndGlobalSection
+EndGlobal
