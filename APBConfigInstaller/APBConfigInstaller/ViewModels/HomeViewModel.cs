@@ -1,0 +1,38 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using APBConfigInstaller.Models;
+using APBConfigInstaller.Services;
+
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+
+using MaterialDesignThemes.Wpf;
+
+namespace APBConfigInstaller.ViewModels;
+
+public partial class HomeViewModel : ObservableObject
+{
+    private readonly ISnackbarMessageQueue _snackbarMessageQueue;
+    private readonly IModProvider _modProvider;
+    private IList<ModBase> _mods;
+    public HomeViewModel(ISnackbarMessageQueue snackbarMessageQueue, IModProvider modProvider)
+    {
+        _snackbarMessageQueue = snackbarMessageQueue;
+        _modProvider = modProvider;
+    }
+
+    [RelayCommand]
+    private void LoadMods()
+    {
+        _mods = _modProvider.GetMods();
+        GroupedMods = _mods.GroupBy(mod => mod.Category).ToDictionary(group => group.Key, group => group.ToList());
+        _snackbarMessageQueue.Enqueue("Mods loaded successfully!");
+    }
+
+    [ObservableProperty]
+    private IDictionary<Category, List<ModBase>> _groupedMods;
+}

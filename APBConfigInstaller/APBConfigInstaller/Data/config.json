@@ -1,0 +1,57 @@
+﻿{
+  "lineReplaces": [
+    {
+      "displayName": "Auto sprint",
+      "category": "QualityOfLife",
+      "filePath": "$baseFolder$\\APBGame\\Config\\APBInput.ini",
+      "oldLine": "Bindings=(Name=\"Sprint\",Command=\"InputSprinting | OnRelease InputStopSprinting\")",
+      "newLine": "Bindings=(Name=\"Sprint\",Command=\"InputStopSprinting | OnRelease InputSprinting\")"
+    },
+    {
+      "displayName": "Hold crouch",
+      "category": "QualityOfLife",
+      "filePath": "$baseFolder$\\APBGame\\Config\\APBInput.ini",
+      "oldLine": "Bindings=(Name=\"Duck\",Command=\"Button m_bDuckButton | InputToggleDuck\")",
+      "newLine": "Bindings=(Name=\"Duck\",Command=\"Button m_bDuckButton | InputToggleDuck | OnRelease InputToggleDuck\")"
+    }
+  ],
+
+  "fileCopies": [
+    {
+      "displayName": "Mission names",
+      "category": "QualityOfLife",
+      "sourceFolder": "$baseFolder$\\Missionnames\\",
+      "destinationFolder": "$baseFolder$\\APBGame\\Localization\\GER\\"
+    },
+    {
+      "displayName": "Muzzle flash",
+      "category": "Visual",
+      "sourceFolder": "$baseFolder$\\RemoveMuzzleflash\\",
+      "destinationFolder": "$baseFolder$\\APBGame\\Content\\Release\\Packages\\VFX\\Weapon\\"
+    },
+    {
+      "displayName": "No fog",
+      "category": "Visual",
+      "sourceFolder": "$baseFolder$\\NoFogShader\\",
+      "destinationFolder": "$baseFolder$\\Engine\\Shaders\\"
+    },
+    {
+      "displayName": "No blood",
+      "category": "Visual",
+      "sourceFolder": "$baseFolder$\\RemoveBlood\\",
+      "destinationFolder": "$baseFolder$\\APBGame\\Content\\Release\\Packages\\VFX\\Character\\"
+    },
+    {
+      "displayName": "No car explosions",
+      "category": "Visual",
+      "sourceFolder": "$baseFolder$\\RemoveVehicleExplosion\\",
+      "destinationFolder": "$baseFolder$\\APBGame\\Content\\Release\\Packages\\VFX\\Vehicle\\"
+    },
+    {
+      "displayName": "Old vegas sound",
+      "category": "Audio",
+      "sourceFolder": "$baseFolder$\\OldVegasSound\\",
+      "destinationFolder": "$baseFolder$\\APBGame\\Content\\Audio\\SoundBanks\\"
+    }
+  ]
+}
