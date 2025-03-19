@@ -1,5 +1,5 @@
 ﻿{
-  "LineReplaces": [
+  "modifications": [
     {
       "DisplayName": "Auto sprint",
       "Category": "QualityOfLife",
@@ -13,10 +13,7 @@
       "FilePath": "$baseFolder$\\APBGame\\Config\\APBInput.ini",
       "OldLine": "Bindings=(Name=\"Duck\",Command=\"Button m_bDuckButton | InputToggleDuck\")",
       "NewLine": "Bindings=(Name=\"Duck\",Command=\"Button m_bDuckButton | InputToggleDuck | OnRelease InputToggleDuck\")"
-    }
-  ],
-
-  "FileCopies": [
+    },
     {
       "DisplayName": "Mission names",
       "Category": "QualityOfLife",

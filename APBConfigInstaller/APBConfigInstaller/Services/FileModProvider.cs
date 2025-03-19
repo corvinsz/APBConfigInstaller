@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using APBConfigInstaller.Models;
 
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace APBConfigInstaller.Services;
 
@@ -20,7 +21,8 @@ public class FileModProvider : IModProvider
     }
     public IList<ModBase> GetMods()
     {
-        return []; // (JsonConvert.DeserializeObject<List<ModBase>>(File.ReadAllText(_file)) ?? []);
+        JObject jObj = JObject.Parse(File.ReadAllText(_file));
+        return jObj["modifications"].ToObject<List<ModBase>>();
     }
 }
 
