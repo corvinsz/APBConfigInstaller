@@ -16,14 +16,10 @@ public enum Category
 }
 public class LineReplaceMod : ModBase
 {
-
-    [JsonProperty(PropertyName = "filePath")]
     public string FilePath { get; set; }
 
-    [JsonProperty(PropertyName = "oldLine")]
     public string OldLine { get; set; }
 
-    [JsonProperty(PropertyName = "newLine")]
     public string NewLine { get; set; }
 }
 
