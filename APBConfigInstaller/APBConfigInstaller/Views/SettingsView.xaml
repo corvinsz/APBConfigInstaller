@@ -19,7 +19,8 @@
         <Button Margin="8,0,0,0"
                 Command="{Binding BrowseCommand}"
                 Content="{materialDesign:PackIcon Kind=Folder}"
-                DockPanel.Dock="Right" />
+                DockPanel.Dock="Right"
+                ToolTip="Browse" />
         <TextBox materialDesign:HintAssist.HelperText="{Binding APBDirectoryHelperText}"
                  materialDesign:HintAssist.Hint="APB installation directory"
                  Text="{Binding Path=APBDirectory, UpdateSourceTrigger=PropertyChanged}" />
@@ -27,26 +28,17 @@
 
       <ListBox Margin="4,8,8,4"
                DockPanel.Dock="Top"
+               ItemsSource="{Binding ThemeOptions}"
                SelectedItem="{Binding SelectedTheme}"
-               Style="{StaticResource MaterialDesignToolToggleFlatListBox}">
+               Style="{StaticResource MaterialDesignToolToggleListBox}">
         <ListBox.Resources>
           <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MaterialDesignToolToggleListBoxItem}">
             <Setter Property="Padding" Value="4,6,4,6" />
           </Style>
         </ListBox.Resources>
-        <ListBoxItem>
-          <TextBlock Text="{x:Static wpf:BaseTheme.Light}" />
-        </ListBoxItem>
-        <ListBoxItem>
-          <TextBlock Text="{x:Static wpf:BaseTheme.Dark}" />
-        </ListBoxItem>
-        <ListBoxItem>
-          <TextBlock Text="{x:Static wpf:BaseTheme.Inherit}" />
-        </ListBoxItem>
       </ListBox>
 
-      <Button Margin="16"
-              Command="{Binding SaveCommand}"
+      <Button Command="{Binding SaveCommand}"
               Content="Save"
               DockPanel.Dock="Top" />
     </DockPanel>

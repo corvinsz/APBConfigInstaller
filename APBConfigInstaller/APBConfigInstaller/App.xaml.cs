@@ -48,17 +48,18 @@ public partial class App : System.Windows.Application
             => configurationBuilder.AddUserSecrets(typeof(App).Assembly))
         .ConfigureServices((hostContext, services) =>
         {
+            // Add Services
             services.AddSingleton<IModProvider, FileModProvider>();
+            services.AddSingleton<IThemeService, ThemeService>();
 
-
+            // Add Views & ViewModels
             services.AddSingleton<MainWindow>();
             services.AddSingleton<MainWindowViewModel>();
-
+            services.AddSingleton<SettingsView>();
+            services.AddSingleton<SettingsViewModel>();
             services.AddSingleton<HomeView>();
             services.AddSingleton<HomeViewModel>();
 
-            services.AddSingleton<SettingsView>();
-            services.AddSingleton<SettingsViewModel>();
 
             services.AddSingleton<WeakReferenceMessenger>();
             services.AddSingleton<IMessenger, WeakReferenceMessenger>(provider => provider.GetRequiredService<WeakReferenceMessenger>());
