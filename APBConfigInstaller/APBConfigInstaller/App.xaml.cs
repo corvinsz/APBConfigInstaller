@@ -9,9 +9,12 @@ using MaterialDesignThemes.Wpf;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.VisualBasic.Logging;
 
 using System.Windows;
 using System.Windows.Threading;
+
+using Velopack;
 
 namespace APBConfigInstaller;
 
@@ -23,6 +26,15 @@ public partial class App : System.Windows.Application
     [STAThread]
     private static void Main(string[] args)
     {
+        try
+        {
+            VelopackApp.Build().Run();
+        }
+        catch (Exception ex)
+        {
+            System.Windows.MessageBox.Show("Unhandled exception: " + ex.ToString());
+        }
+
         MainAsync(args).GetAwaiter().GetResult();
     }
 

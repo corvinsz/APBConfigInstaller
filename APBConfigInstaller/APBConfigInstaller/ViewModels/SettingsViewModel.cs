@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,8 @@ using CommunityToolkit.Mvvm.Input;
 
 using MaterialDesignThemes.Wpf;
 
+using Velopack;
+
 namespace APBConfigInstaller.ViewModels;
 
 public partial class SettingsViewModel : ObservableObject
@@ -20,6 +23,8 @@ public partial class SettingsViewModel : ObservableObject
     public SettingsViewModel(IThemeService themeService)
     {
         _themeService = themeService;
+        string updateUrl = ""; // replace with your update url
+        _um = new UpdateManager(updateUrl);
     }
 
     [ObservableProperty]
@@ -60,4 +65,51 @@ public partial class SettingsViewModel : ObservableObject
             APBDirectory = fbd.SelectedPath;
         }
     }
+
+    #region velopack_stuff
+    private readonly UpdateManager _um;
+    private UpdateInfo? _update;
+
+    public bool IsUpdateAvailable => _update is not null;
+
+    [ObservableProperty]
+    private int _downloadProgress = 0;
+
+    [RelayCommand]
+    private async Task CheckForUpdates()
+    {
+        try
+        {
+            // ConfigureAwait(true) so that UpdateStatus() is called on the UI thread
+            _update = await _um.CheckForUpdatesAsync().ConfigureAwait(true);
+            OnPropertyChanged(nameof(IsUpdateAvailable));
+        }
+        catch (Exception ex)
+        {
+            // TODO: Log error
+            //App.Log.LogError(ex, "Error checking for updates");
+        }
+    }
+
+    [RelayCommand]
+    private async Task ApplyUpdateAndRestart()
+    {
+        if (_update is null)
+        {
+            return;
+        }
+
+        try
+        {
+            // ConfigureAwait(true) so that UpdateStatus() is called on the UI thread
+            await _um.DownloadUpdatesAsync(_update, (progress) => DownloadProgress = progress).ConfigureAwait(true);
+            _um.ApplyUpdatesAndRestart(_update);
+        }
+        catch (Exception ex)
+        {
+            // TODO: Log error
+            // App.Log.LogError(ex, "Error downloading updates");
+        }
+    }
+    #endregion
 }
