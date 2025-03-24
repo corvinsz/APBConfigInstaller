@@ -18,7 +18,7 @@ namespace APBConfigInstaller;
 /// <summary>
 /// Interaction logic for App.xaml
 /// </summary>
-public partial class App : Application
+public partial class App : System.Windows.Application
 {
     [STAThread]
     private static void Main(string[] args)
@@ -56,6 +56,9 @@ public partial class App : Application
 
             services.AddSingleton<HomeView>();
             services.AddSingleton<HomeViewModel>();
+
+            services.AddSingleton<SettingsView>();
+            services.AddSingleton<SettingsViewModel>();
 
             services.AddSingleton<WeakReferenceMessenger>();
             services.AddSingleton<IMessenger, WeakReferenceMessenger>(provider => provider.GetRequiredService<WeakReferenceMessenger>());

@@ -18,11 +18,11 @@ public class ModBaseConverter : JsonConverter
         ModBase target;
 
         // Inspect properties to determine type
-        if (jObject["FilePath"] != null)
+        if (jObject["FilePath"] is not null)
         {
             target = new LineReplaceMod();
         }
-        else if (jObject["SourceFolder"] != null)
+        else if (jObject["SourceFolder"] is not null)
         {
             target = new FileCopyMod();
         }

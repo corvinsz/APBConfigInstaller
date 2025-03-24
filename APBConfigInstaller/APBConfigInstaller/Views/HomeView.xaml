@@ -28,10 +28,9 @@
               <ItemsControl ItemsSource="{Binding Value}">
                 <ItemsControl.ItemTemplate>
                   <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                      <TextBlock Text="{Binding DisplayName}" Margin="5"/>
-                      <Button Command="{Binding DataContext.ApplyModCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding .}" Margin="5">
-                        <localComponents:If Condition="{Binding ApplyModCommand.IsRunning}">
+                    <DockPanel>
+                      <Button DockPanel.Dock="Right" Command="{Binding DataContext.ApplyModCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding .}" Margin="5">
+                        <localComponents:If Condition="{Binding IsApplyMod}">
                           <localComponents:If.True>
                             <ProgressBar IsIndeterminate="True" Style="{StaticResource MaterialDesignCircularProgressBar}"/>
                           </localComponents:If.True>
@@ -40,7 +39,8 @@
                           </localComponents:If.False>
                         </localComponents:If>
                       </Button>
-                    </StackPanel>
+                      <TextBlock DockPanel.Dock="Left" Text="{Binding DisplayName}" Margin="5" VerticalAlignment="Center" />
+                    </DockPanel>
                   </DataTemplate>
                 </ItemsControl.ItemTemplate>
               </ItemsControl>
