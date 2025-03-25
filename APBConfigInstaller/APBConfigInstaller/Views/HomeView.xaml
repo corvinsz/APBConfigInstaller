@@ -13,7 +13,7 @@
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
 
-    <Button Grid.Row="0" Content="Reload mods" Command="{Binding LoadModsCommand}"/>
+    <!--<Button Grid.Row="0" Content="Reload mods" Command="{Binding LoadModsCommand}"/>-->
 
     <ScrollViewer Grid.Row="1">
       <ItemsControl ItemsSource="{Binding GroupedMods}">

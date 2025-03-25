@@ -14,6 +14,7 @@ using CommunityToolkit.Mvvm.Input;
 using MaterialDesignThemes.Wpf;
 
 using Velopack;
+using Velopack.Sources;
 
 namespace APBConfigInstaller.ViewModels;
 
@@ -23,8 +24,9 @@ public partial class SettingsViewModel : ObservableObject
     public SettingsViewModel(IThemeService themeService)
     {
         _themeService = themeService;
-        string updateUrl = ""; // replace with your update url
-        _um = new UpdateManager(updateUrl);
+
+        const string repoUrl = "https://github.com/corvinsz/APBConfigInstaller/tree/v0.1.0";
+        _um = new UpdateManager(new GithubSource(repoUrl, "", false));
     }
 
     [ObservableProperty]
@@ -91,7 +93,7 @@ public partial class SettingsViewModel : ObservableObject
         }
     }
 
-    [RelayCommand]
+    [RelayCommand(CanExecute = nameof(IsUpdateAvailable))]
     private async Task ApplyUpdateAndRestart()
     {
         if (_update is null)
