@@ -25,8 +25,8 @@ public partial class SettingsViewModel : ObservableObject
     {
         _themeService = themeService;
 
-        const string repoUrl = "https://github.com/corvinsz/APBConfigInstaller/tree/v0.1.0";
-        _um = new UpdateManager(new GithubSource(repoUrl, "", false));
+        const string repoUrl = "https://github.com/corvinsz/APBConfigInstaller";
+        _um = new UpdateManager(new GithubSource(repoUrl, "", true));
     }
 
     [ObservableProperty]
@@ -90,10 +90,11 @@ public partial class SettingsViewModel : ObservableObject
         {
             // TODO: Log error
             //App.Log.LogError(ex, "Error checking for updates");
+            EventLog.WriteEntry("Application", ex.Message, EventLogEntryType.Error);
         }
     }
 
-    [RelayCommand(CanExecute = nameof(IsUpdateAvailable))]
+    [RelayCommand]
     private async Task ApplyUpdateAndRestart()
     {
         if (_update is null)

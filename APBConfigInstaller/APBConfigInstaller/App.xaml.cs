@@ -28,7 +28,9 @@ public partial class App : System.Windows.Application
     {
         try
         {
-            VelopackApp.Build().Run();
+            VelopackApp.Build()
+                       .SetLogger(new Services.WindowsEventLogLogger())
+                       .Run();
         }
         catch (Exception ex)
         {

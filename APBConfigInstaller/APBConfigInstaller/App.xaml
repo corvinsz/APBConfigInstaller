@@ -7,7 +7,7 @@
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>
         <materialDesign:BundledTheme BaseTheme="Inherit" 
-                                     PrimaryColor="Purple" 
+                                     PrimaryColor="LightBlue" 
                                      SecondaryColor="LightGreen" />
 
         <ResourceDictionary

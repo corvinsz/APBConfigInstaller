@@ -1,2 +1,2 @@
 dotnet publish .\APBConfigInstaller\APBConfigInstaller\APBConfigInstaller.csproj -c Release -r win-x64 -o .\APBConfigInstaller\APBConfigInstaller\publish
-vpk pack -u APBConfigInstaller -v 0.1.1 -p .\APBConfigInstaller\APBConfigInstaller\publish -e APBConfigInstaller.exe
+vpk pack -u APBConfigInstaller -v 0.1.8 -p .\APBConfigInstaller\APBConfigInstaller\publish -e APBConfigInstaller.exe
