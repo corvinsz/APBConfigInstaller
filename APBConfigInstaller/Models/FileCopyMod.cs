@@ -9,9 +9,9 @@ namespace APBConfigInstaller.Models;
 
 public class FileCopyMod : ModBase
 {
-	public string SourceFolder { get; set; }
+	public string? SourceFolder { get; set; }
 
-	public string DestinationFolder { get; set; }
+	public string? DestinationFolder { get; set; }
 
 	public override void Apply()
 	{

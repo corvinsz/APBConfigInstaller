@@ -1,6 +1,8 @@
 ﻿using Avalonia;
 using Avalonia.Styling;
 using Avalonia.Themes.Fluent;
+using Material.Styles.Themes;
+using Material.Styles.Themes.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +13,15 @@ namespace APBConfigInstaller.Services;
 
 public interface IThemeService
 {
-	void SetTheme(ThemeVariant? themeVariant);
+	void SetTheme(BaseThemeMode themeMode);
 }
 
 public class ThemeService : IThemeService
 {
-	public void SetTheme(ThemeVariant? themeVariant)
+	private static readonly MaterialThemeBase _materialThemeStyles =
+		Application.Current!.LocateMaterialTheme<MaterialThemeBase>();
+	public void SetTheme(BaseThemeMode themeMode)
 	{
-		if (Application.Current is not null)
-		{
-			Application.Current.RequestedThemeVariant = themeVariant;
-		}
+		_materialThemeStyles.BaseTheme = themeMode;
 	}
 }
