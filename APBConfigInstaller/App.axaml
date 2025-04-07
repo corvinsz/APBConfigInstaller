@@ -2,6 +2,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="APBConfigInstaller.App"
              xmlns:local="using:APBConfigInstaller"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:dialogHostAvalonia="clr-namespace:DialogHostAvalonia;assembly=DialogHost.Avalonia"
              xmlns:themes="clr-namespace:Material.Styles.Themes;assembly=Material.Styles"
              RequestedThemeVariant="Default">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
@@ -11,11 +13,16 @@
     </Application.DataTemplates>
   
     <Application.Styles>
-        <themes:MaterialTheme BaseTheme="Inherit" PrimaryColor="Purple" SecondaryColor="Lime" />
+        <themes:MaterialTheme BaseTheme="Inherit"
+                              PrimaryColor="Purple"
+                              SecondaryColor="Lime" />
         <!--<StyleInclude Source="avares://Material.Icons.Avalonia/App.xaml"></StyleInclude>-->
 
-        <Style Selector="Separator">
-          <Setter Property="Margin" Value="0 4 0 4"/>
+      <avalonia:MaterialIconStyles />
+      <dialogHostAvalonia:DialogHostStyles />
+
+      <Style Selector="Separator">
+          <Setter Property="Margin" Value="0 8"/>
         </Style>
       
     </Application.Styles>

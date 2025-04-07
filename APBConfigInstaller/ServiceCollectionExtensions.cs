@@ -15,6 +15,7 @@ public static class ServiceCollectionExtensions
 		// Services
 		collection.AddTransient<Services.IThemeService, Services.ThemeService>();
 		collection.AddTransient<Services.IModProvider, Services.FileModProvider>();
+		collection.AddTransient<Services.ISnackbarMessageService, Services.SnackbarMessageService>();
 
 		// ViewModels
 		collection.AddTransient<HomeViewModel>();

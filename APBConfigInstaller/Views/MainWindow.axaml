@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="APBConfigInstaller.Views.MainWindow"
+        xmlns:md="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+        xmlns:dialogHostAvalonia="clr-namespace:DialogHostAvalonia;assembly=DialogHost.Avalonia"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
+        xmlns:mdIcon="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
         xmlns:views="clr-namespace:APBConfigInstaller.Views;assembly=APBConfigInstaller"
         Title="APBConfigInstaller">
 
@@ -16,50 +19,49 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-  <!--<materialDesign:DialogHost>-->
-    <Grid>
-      <TabControl TabStripPlacement="Left">
-        <TabItem>
-          <TabItem.Header>
-            <StackPanel>
-              <!--<materialDesign:PackIcon Width="24"
-                                       Height="24"
-                                       HorizontalAlignment="Center"
-                                       Kind="Home" />-->
-              <TextBlock HorizontalAlignment="Center" Text="Home" />
-            </StackPanel>
-          </TabItem.Header>
-          <views:HomeView />
-        </TabItem>
-        <TabItem>
-          <TabItem.Header>
-            <StackPanel>
-              <!--<materialDesign:PackIcon Width="24"
-                                       Height="24"
-                                       HorizontalAlignment="Center"
-                                       Kind="PencilRuler" />-->
-              <TextBlock HorizontalAlignment="Center" Text="Designer" />
-            </StackPanel>
-          </TabItem.Header>
-          <!--content designer-->
-        </TabItem>
-        <TabItem>
-          <TabItem.Header>
-            <StackPanel>
-              <!--<materialDesign:PackIcon Width="24"
-                                       Height="24"
-                                       HorizontalAlignment="Center"
-                                       Kind="Settings" />-->
-              <TextBlock HorizontalAlignment="Center" Text="Settings" />
-            </StackPanel>
-          </TabItem.Header>
-          <views:SettingsView />
-        </TabItem>
-      </TabControl>
-
-      <!--<materialDesign:Snackbar x:Name="snackBar" MessageQueue="{materialDesign:MessageQueue}" />-->
-
-    </Grid>
-  <!--</materialDesign:DialogHost>-->
+  <dialogHostAvalonia:DialogHost>
+    <md:SnackbarHost HostName="Root">
+      <Grid>
+        <TabControl TabStripPlacement="Left">
+          <TabItem>
+            <TabItem.Header>
+              <StackPanel>
+                <mdIcon:MaterialIcon Width="24"
+                                     Height="24"
+                                     HorizontalAlignment="Center"
+                                     Kind="Home" />
+                <TextBlock HorizontalAlignment="Center" Text="Home" />
+              </StackPanel>
+            </TabItem.Header>
+            <views:HomeView />
+          </TabItem>
+          <TabItem>
+            <TabItem.Header>
+              <StackPanel>
+                <mdIcon:MaterialIcon Width="24"
+                                     Height="24"
+                                     HorizontalAlignment="Center"
+                                     Kind="PencilRuler" />
+                <TextBlock HorizontalAlignment="Center" Text="Designer" />
+              </StackPanel>
+            </TabItem.Header>
+            <!--content designer-->
+          </TabItem>
+          <TabItem>
+            <TabItem.Header>
+              <StackPanel>
+                <mdIcon:MaterialIcon Width="24"
+                                     Height="24"
+                                     HorizontalAlignment="Center"
+                                     Kind="Settings" />
+                <TextBlock HorizontalAlignment="Center" Text="Settings" />
+              </StackPanel>
+            </TabItem.Header>
+            <views:SettingsView />
+          </TabItem>
+        </TabControl>
+      </Grid>
+    </md:SnackbarHost>
+  </dialogHostAvalonia:DialogHost>
 
 </Window>
