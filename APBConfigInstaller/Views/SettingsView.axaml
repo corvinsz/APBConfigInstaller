@@ -4,37 +4,46 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="using:APBConfigInstaller.ViewModels"
+             xmlns:md="clr-namespace:Material.Styles.Assists;assembly=Material.Styles"
+             xmlns:mdIcon="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              x:DataType="vm:SettingsViewModel"
              x:Class="APBConfigInstaller.Views.SettingsView">
-  <ScrollViewer>
-    <DockPanel>
-      <TextBlock DockPanel.Dock="Top"
-                 FontSize="24"
-                 Text="Settings" />
-      <DockPanel Margin="0,16" DockPanel.Dock="Top">
-        <Button Margin="8,0,0,0"
-                Command="{Binding BrowseCommand}"
-                DockPanel.Dock="Right" />
-                <!--Content="{materialDesign:PackIcon Kind=Folder}"-->
-        <!--<TextBox materialDesign:HintAssist.HelperText="{Binding APBDirectoryHelperText}"
+  <ScrollViewer Padding="16">
+    <DockPanel LastChildFill="False">
+        <DockPanel DockPanel.Dock="Top" Grid.Column="1">
+          <Button Margin="8,0,0,0"
+                  Command="{Binding BrowseCommand}"
+                  Content="{mdIcon:MaterialIconExt Kind=Abacus}"
+                  DockPanel.Dock="Right">
+          </Button>
+          <!--Content="{materialDesign:PackIcon Kind=Folder}"-->
+          <!--<TextBox materialDesign:HintAssist.HelperText="{Binding APBDirectoryHelperText}"
                  materialDesign:HintAssist.Hint="APB installation directory"
                  Text="{Binding Path=APBDirectory, UpdateSourceTrigger=PropertyChanged}" />-->
-        <TextBox Text="{Binding Path=APBDirectory, UpdateSourceTrigger=PropertyChanged}"
-                 Watermark="APB installation directory" />
-      </DockPanel>
+          <TextBox Text="{Binding Path=APBDirectory, UpdateSourceTrigger=PropertyChanged}"
+                   UseFloatingWatermark="True"
+                   md:TextFieldAssist.Label="APB installation directory" />
+        </DockPanel>
 
-      <ListBox Margin="4,8,8,4"
-               HorizontalAlignment="Left"
-               DockPanel.Dock="Top"
-               ItemsSource="{Binding ThemeOptions}"
-               SelectedItem="{Binding SelectedTheme}">
-        <ListBox.ItemsPanel>
-          <ItemsPanelTemplate>
-            <WrapPanel />
-          </ItemsPanelTemplate>
-        </ListBox.ItemsPanel>
-      </ListBox>
+      <Separator DockPanel.Dock="Top" />
 
+      <Grid DockPanel.Dock="Top" ColumnDefinitions="*,auto">
+        <TextBlock Grid.Column="0"
+                   Text="Theme"
+                   VerticalAlignment="Center"
+                   FontSize="24" />
+
+        <ListBox Grid.Column="1"
+                 Margin="4,8,8,4"
+                 ItemsSource="{Binding ThemeOptions}"
+                 SelectedItem="{Binding SelectedTheme}">
+          <ListBox.ItemsPanel>
+            <ItemsPanelTemplate>
+              <WrapPanel />
+            </ItemsPanelTemplate>
+          </ListBox.ItemsPanel>
+        </ListBox>
+      </Grid>
 
       <!--<HeaderedContentControl Header="Update" Margin="0,16" DockPanel.Dock="Top">
         --><!--<GroupBox.Header>
@@ -49,12 +58,24 @@
                   Content="Check for updates" />
         </StackPanel>
       </HeaderedContentControl>-->
+      
+      <Separator DockPanel.Dock="Top" />
+
+      <DockPanel DockPanel.Dock="Top">
+        <TextBlock VerticalAlignment="Center"
+                   Text="{Binding CurrentAppVersion}"
+                   DockPanel.Dock="Right"/>
+        <TextBlock FontSize="24"
+                   Text="Current version"
+                   DockPanel.Dock="Right"/>
+      </DockPanel>
+      
+      <Separator DockPanel.Dock="Top" />
 
       <Grid ColumnDefinitions="*,auto"
             RowDefinitions="auto, auto"
             HorizontalAlignment="Stretch"
-            DockPanel.Dock="Top"
-            Background="Fuchsia">
+            DockPanel.Dock="Top">
         <TextBlock Grid.Row="0"
                    Grid.Column="0"
                    Grid.ColumnSpan="2"
@@ -72,6 +93,8 @@
                   IsVisible="{Binding IsUpdateAvailable}"/>
         </StackPanel>
       </Grid>
+
+      <Separator DockPanel.Dock="Top" />
 
       <Button Content="Save"
               DockPanel.Dock="Top" />

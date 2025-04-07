@@ -11,6 +11,7 @@ using Velopack.Sources;
 using Velopack;
 using Avalonia.Themes.Fluent;
 using Avalonia.Styling;
+using Material.Styles.Themes.Base;
 
 namespace APBConfigInstaller.ViewModels;
 
@@ -23,7 +24,7 @@ public partial class SettingsViewModel : ViewModelBase
 
 		const string repoUrl = "https://github.com/corvinsz/APBConfigInstaller";
 		_um = new UpdateManager(new GithubSource(repoUrl, "", true));
-
+		CurrentAppVersion = _um.CurrentVersion?.ToString() ?? "n.a.";
 		SelectedTheme = ThemeOptions.First();
 	}
 
@@ -37,17 +38,12 @@ public partial class SettingsViewModel : ViewModelBase
 	[ObservableProperty]
 	private string _APBDirectoryHelperText;
 
-	public ThemeVariant[] ThemeOptions { get; } =
-	[
-		ThemeVariant.Default,
-		ThemeVariant.Light,
-		ThemeVariant.Dark
-	];
+	public BaseThemeMode[] ThemeOptions { get; } = Enum.GetValues<BaseThemeMode>();
 
 	[ObservableProperty]
-	private ThemeVariant? _selectedTheme;
+	private BaseThemeMode _selectedTheme;
 
-	partial void OnSelectedThemeChanged(ThemeVariant? value)
+	partial void OnSelectedThemeChanged(BaseThemeMode value)
 	{
 		_themeService.SetTheme(value);
 	}
@@ -73,12 +69,14 @@ public partial class SettingsViewModel : ViewModelBase
 	[ObservableProperty]
 	private int _downloadProgress = 0;
 
+	[ObservableProperty]
+	private string _currentAppVersion;
+
 	[RelayCommand]
 	private async Task CheckForUpdatesUpdate()
 	{
 		try
 		{
-			// ConfigureAwait(true) so that UpdateStatus() is called on the UI thread
 			_update = await _um.CheckForUpdatesAsync().ConfigureAwait(true);
 			OnPropertyChanged(nameof(IsUpdateAvailable));
 		}
@@ -100,7 +98,6 @@ public partial class SettingsViewModel : ViewModelBase
 
 		try
 		{
-			// ConfigureAwait(true) so that UpdateStatus() is called on the UI thread
 			await _um.DownloadUpdatesAsync(_update, (progress) => DownloadProgress = progress).ConfigureAwait(true);
 			_um.ApplyUpdatesAndRestart(_update);
 		}

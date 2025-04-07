@@ -5,6 +5,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:localComponents="using:APBConfigInstaller.Views.Components"
              xmlns:vm="using:APBConfigInstaller.ViewModels"
+             xmlns:ctrl="using:GroupBox.Avalonia.Controls" 
              x:DataType="vm:HomeViewModel"
              x:Class="APBConfigInstaller.Views.HomeView">
   <Grid>
@@ -26,27 +27,36 @@
         </ItemsControl.ItemsPanel>
         <ItemsControl.ItemTemplate>
           <DataTemplate>
-            <!--<GroupBox Header="{Binding Key}" Margin="16">
+            <ctrl:GroupBox Header="{Binding Key}"
+                           Margin="16"
+                           Theme="{StaticResource GroupBoxClassic}">
               <ItemsControl ItemsSource="{Binding Value}">
                 <ItemsControl.ItemTemplate>
                   <DataTemplate>
-                    <DockPanel>
-                      <Button DockPanel.Dock="Right" Command="{Binding DataContext.ApplyModCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding .}" Margin="5">
-                        <localComponents:If Condition="{Binding IsApplyMod}">
-                          <localComponents:If.True>
-                            <ProgressBar IsIndeterminate="True" Style="{StaticResource MaterialDesignCircularProgressBar}"/>
-                          </localComponents:If.True>
-                          <localComponents:If.False>
-                            <TextBlock Text="Install"/>
-                          </localComponents:If.False>
-                        </localComponents:If>
-                      </Button>
-                      <TextBlock DockPanel.Dock="Left" Text="{Binding DisplayName}" Margin="5" VerticalAlignment="Center" />
-                    </DockPanel>
-                  </DataTemplate>
-                </ItemsControl.ItemTemplate>
-              </ItemsControl>
-            </GroupBox>-->
+              <DockPanel>
+                <Button DockPanel.Dock="Right"
+                        Command="{Binding $parent[UserControl].((vm:HomeViewModel)DataContext).ApplyModCommand}"
+                        CommandParameter="{Binding .}"
+                        Margin="5">
+                <!--<Button DockPanel.Dock="Right"  Margin="5">-->
+                  <localComponents:If>
+                    <localComponents:If.True>
+                      <ProgressBar IsIndeterminate="True" />
+                    </localComponents:If.True>
+                    <localComponents:If.False>
+                      <TextBlock Text="Install"/>
+                    </localComponents:If.False>
+                  </localComponents:If>
+                </Button>
+                <TextBlock DockPanel.Dock="Left"
+                           Text="{Binding DisplayName}"
+                           Margin="5"
+                           VerticalAlignment="Center" />
+              </DockPanel>
+                    </DataTemplate>
+                  </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ctrl:GroupBox>
           </DataTemplate>
         </ItemsControl.ItemTemplate>
       </ItemsControl>
