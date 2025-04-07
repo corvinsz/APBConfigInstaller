@@ -1,6 +1,6 @@
 ﻿using Avalonia;
 using Avalonia.Styling;
-using Avalonia.Themes.Fluent;
+using SukiUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +11,23 @@ namespace APBConfigInstaller.Services;
 
 public interface IThemeService
 {
-	void SetTheme(ThemeVariant? themeVariant);
+	void SetTheme();
 }
 
 public class ThemeService : IThemeService
 {
-	public void SetTheme(ThemeVariant? themeVariant)
+	private readonly SukiTheme _theme;
+
+	public ThemeService()
 	{
-		if (Application.Current is not null)
-		{
-			Application.Current.RequestedThemeVariant = themeVariant;
-		}
+		_theme = SukiTheme.GetInstance();
+	}
+	public void SetTheme()
+	{
+		_theme.SwitchBaseTheme();
+		//if (Application.Current is not null)
+		//{
+		//	Application.Current.RequestedThemeVariant = themeVariant;
+		//}
 	}
 }

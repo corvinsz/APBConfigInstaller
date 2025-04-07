@@ -9,8 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Velopack.Sources;
 using Velopack;
-using Avalonia.Themes.Fluent;
 using Avalonia.Styling;
+using SukiUI;
 
 namespace APBConfigInstaller.ViewModels;
 
@@ -25,6 +25,7 @@ public partial class SettingsViewModel : ViewModelBase
 		_um = new UpdateManager(new GithubSource(repoUrl, "", true));
 
 		SelectedTheme = ThemeOptions.First();
+
 	}
 
 	[ObservableProperty]
@@ -49,7 +50,8 @@ public partial class SettingsViewModel : ViewModelBase
 
 	partial void OnSelectedThemeChanged(ThemeVariant? value)
 	{
-		_themeService.SetTheme(value);
+		_themeService.SetTheme();
+		//_themeService.SetTheme(value);
 	}
 
 	[RelayCommand]

@@ -1,4 +1,4 @@
-<Window xmlns="https://github.com/avaloniaui"
+<suki:SukiWindow xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:APBConfigInstaller.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,6 +6,7 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="APBConfigInstaller.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
+        xmlns:suki="https://github.com/kikipoulet/SukiUI"
         Icon="/Assets/avalonia-logo.ico"
         xmlns:views="clr-namespace:APBConfigInstaller.Views;assembly=APBConfigInstaller"
         Title="APBConfigInstaller">
@@ -62,4 +63,4 @@
     </Grid>
   <!--</materialDesign:DialogHost>-->
 
-</Window>
+</suki:SukiWindow>
