@@ -1,0 +1,56 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:localComponents="using:APBConfigInstaller.Views.Components"
+             xmlns:vm="using:APBConfigInstaller.ViewModels"
+             x:DataType="vm:HomeViewModel"
+             x:Class="APBConfigInstaller.Views.HomeView">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <Button Grid.Row="0"
+            Content="Reload mods"
+            Command="{Binding LoadModsCommand}"/>
+
+    <ScrollViewer Grid.Row="1">
+      <ItemsControl ItemsSource="{Binding GroupedMods}">
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <WrapPanel/>
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <!--<GroupBox Header="{Binding Key}" Margin="16">
+              <ItemsControl ItemsSource="{Binding Value}">
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate>
+                    <DockPanel>
+                      <Button DockPanel.Dock="Right" Command="{Binding DataContext.ApplyModCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding .}" Margin="5">
+                        <localComponents:If Condition="{Binding IsApplyMod}">
+                          <localComponents:If.True>
+                            <ProgressBar IsIndeterminate="True" Style="{StaticResource MaterialDesignCircularProgressBar}"/>
+                          </localComponents:If.True>
+                          <localComponents:If.False>
+                            <TextBlock Text="Install"/>
+                          </localComponents:If.False>
+                        </localComponents:If>
+                      </Button>
+                      <TextBlock DockPanel.Dock="Left" Text="{Binding DisplayName}" Margin="5" VerticalAlignment="Center" />
+                    </DockPanel>
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
+            </GroupBox>-->
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </ScrollViewer>
+
+  </Grid>
+</UserControl>
