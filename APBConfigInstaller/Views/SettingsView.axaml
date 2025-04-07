@@ -87,10 +87,12 @@
                    Text="Check for a new version. If available, it will download, and you canrestart the app to apply the changes." />
 
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-          <Button Content="Check for updates"/>
+          <Button Content="Check for updates"
+                  Command="{Binding CheckForUpdatesUpdateCommand}"/>
           <Button Content="Install update"
                   Command="{Binding ApplyUpdateAndRestartCommand}"
-                  IsVisible="{Binding IsUpdateAvailable}"/>
+                  IsVisible="{Binding IsUpdateAvailable}"
+                  Margin="4 0 0 0"/>
         </StackPanel>
       </Grid>
 
