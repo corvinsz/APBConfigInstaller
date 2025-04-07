@@ -17,9 +17,12 @@ namespace APBConfigInstaller.ViewModels;
 
 public partial class SettingsViewModel : ViewModelBase
 {
+	private readonly ISnackbarMessageService _snackbarMessageService;
 	private readonly IThemeService _themeService;
-	public SettingsViewModel(IThemeService themeService)
+
+	public SettingsViewModel(ISnackbarMessageService snackbarMessageService, IThemeService themeService)
 	{
+		_snackbarMessageService = snackbarMessageService;
 		_themeService = themeService;
 
 		const string repoUrl = "https://github.com/corvinsz/APBConfigInstaller";
@@ -75,13 +78,29 @@ public partial class SettingsViewModel : ViewModelBase
 	[RelayCommand]
 	private async Task CheckForUpdatesUpdate()
 	{
+		if (!_um.IsInstalled)
+		{
+			_snackbarMessageService.ShowMessage("App is not installed");
+			return;
+		}
+
 		try
 		{
 			_update = await _um.CheckForUpdatesAsync().ConfigureAwait(true);
 			OnPropertyChanged(nameof(IsUpdateAvailable));
+
+			if (IsUpdateAvailable)
+			{
+				_snackbarMessageService.ShowMessage($"Update available: {_update?.TargetFullRelease.Version.ToString()}");
+			}
+			else
+			{
+				_snackbarMessageService.ShowMessage("No updates available");
+			}
 		}
 		catch (Exception ex)
 		{
+			_snackbarMessageService.ShowMessage(ex.Message);
 			// TODO: Log error
 			//App.Log.LogError(ex, "Error checking for updates");
 			//EventLog.WriteEntry("Application", ex.Message, EventLogEntryType.Error);

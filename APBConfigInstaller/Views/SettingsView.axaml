@@ -16,10 +16,6 @@
                   Content="{mdIcon:MaterialIconExt Kind=Abacus}"
                   DockPanel.Dock="Right">
           </Button>
-          <!--Content="{materialDesign:PackIcon Kind=Folder}"-->
-          <!--<TextBox materialDesign:HintAssist.HelperText="{Binding APBDirectoryHelperText}"
-                 materialDesign:HintAssist.Hint="APB installation directory"
-                 Text="{Binding Path=APBDirectory, UpdateSourceTrigger=PropertyChanged}" />-->
           <TextBox Text="{Binding Path=APBDirectory, UpdateSourceTrigger=PropertyChanged}"
                    UseFloatingWatermark="True"
                    md:TextFieldAssist.Label="APB installation directory" />
