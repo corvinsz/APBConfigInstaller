@@ -12,6 +12,7 @@ using Velopack;
 using Avalonia.Themes.Fluent;
 using Avalonia.Styling;
 using Material.Styles.Themes.Base;
+using Avalonia.Controls;
 
 namespace APBConfigInstaller.ViewModels;
 
@@ -122,6 +123,7 @@ public partial class SettingsViewModel : ViewModelBase
 		}
 		catch (Exception ex)
 		{
+			_snackbarMessageService.ShowMessage(ex.Message);
 			// TODO: Log error
 			// App.Log.LogError(ex, "Error downloading updates");
 		}

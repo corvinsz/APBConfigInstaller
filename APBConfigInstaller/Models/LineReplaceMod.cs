@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -15,8 +16,10 @@ public class LineReplaceMod : ModBase
 
 	public string? NewLine { get; set; }
 
-	public override void Apply() => ReplaceText(FilePath, OldLine, NewLine);
-
+	protected override void InternalApply()
+	{
+		ReplaceText(FilePath, OldLine, NewLine);
+	}
 	private static void ReplaceText(string? file, string? oldText, string? newText)
 	{
 		string fileContent = File.ReadAllText(file);

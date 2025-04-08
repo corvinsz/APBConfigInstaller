@@ -12,12 +12,12 @@ namespace APBConfigInstaller.ViewModels;
 
 public partial class HomeViewModel : ViewModelBase
 {
-	//private readonly ISnackbarMessageQueue _snackbarMessageQueue;
+	private readonly ISnackbarMessageService _snackbarMessageService;
 	private readonly IModProvider _modProvider;
 	private IList<ModBase> _mods;
-	public HomeViewModel(/*ISnackbarMessageQueue snackbarMessageQueue,*/ IModProvider modProvider)
+	public HomeViewModel(ISnackbarMessageService snackbarMessageService, IModProvider modProvider)
 	{
-		//_snackbarMessageQueue = snackbarMessageQueue;
+		_snackbarMessageService = snackbarMessageService;
 		_modProvider = modProvider;
 	}
 
@@ -43,15 +43,12 @@ public partial class HomeViewModel : ViewModelBase
 	{
 		try
 		{
-			await Task.Run(() =>
-			{
-				mod.Apply();
-				//_snackbarMessageQueue.Enqueue($"Applied mod: {mod.DisplayName}");
-			});
+			await mod.ApplyAsync();
+			_snackbarMessageService.ShowMessage($"Applied mod: {mod.DisplayName}");
 		}
 		catch (Exception ex)
 		{
-			//_snackbarMessageQueue.Enqueue($"Failed to apply mod: {mod.DisplayName} - {ex.Message}");
+			_snackbarMessageService.ShowMessage($"Failed to apply mod: {mod.DisplayName} - {ex.Message}");
 		}
 	}
 }

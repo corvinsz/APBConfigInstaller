@@ -13,7 +13,7 @@
         <DockPanel DockPanel.Dock="Top" Grid.Column="1">
           <Button Margin="8,0,0,0"
                   Command="{Binding BrowseCommand}"
-                  Content="{mdIcon:MaterialIconExt Kind=Abacus}"
+                  Content="{mdIcon:MaterialIconExt Kind=Folder}"
                   DockPanel.Dock="Right">
           </Button>
           <TextBox Text="{Binding Path=APBDirectory, UpdateSourceTrigger=PropertyChanged}"
@@ -80,7 +80,7 @@
 
         <TextBlock Grid.Row="1"
                    Grid.Column="0"
-                   Text="Check for a new version. If available, it will download, and you canrestart the app to apply the changes." />
+                   Text="Check for a new version. If available, it will download, and you can restart the app to apply the changes." />
 
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
           <Button Content="Check for updates"

@@ -13,7 +13,7 @@ public class FileCopyMod : ModBase
 
 	public string? DestinationFolder { get; set; }
 
-	public override void Apply()
+	protected override void InternalApply()
 	{
 		foreach (string file in Directory.GetFiles(SourceFolder))
 		{
